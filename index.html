@@ -252,3 +252,344 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dodge Challenger - Universo Muscle</title>
+  <style>
+    :root {
+      --bg-color: #f4f5f7;
+      --card-bg: #ffffff;
+      --primary-color: #d63031;
+      --text-color: #2d3436;
+      --text-muted: #636e72;
+      --border-color: #dfe6e9;
+      --accent-color: #00b894;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --card-bg: #1e1e1e;
+      --primary-color: #ff7675;
+      --text-color: #f5f6fa;
+      --text-muted: #b2bec3;
+      --border-color: #2d3436;
+      --accent-color: #55efc4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      max-width: 700px;
+      margin-bottom: 10px;
+    }
+
+    .theme-btn {
+      background: transparent;
+      border: 2px solid var(--border-color);
+      color: var(--text-color);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--primary-color);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      max-width: 700px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    main {
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-color);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+
+    .gallery-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: opacity 0.2s;
+    }
+
+    .nav-btn:hover {
+      opacity: 0.9;
+    }
+
+    .specs-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .specs-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .specs-list li:last-child {
+      border-bottom: none;
+    }
+
+    .like-section {
+      text-align: center;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-color);
+    }
+
+    .like-btn {
+      background-color: var(--card-bg);
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .like-btn:hover {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .counter {
+      font-size: 1.2rem;
+      margin-top: 15px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 25px 0 10px 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <button class="theme-btn" id="themeBtn">
+      <span id="themeIcon">🌙</span> <span id="themeText">Modo Escuro</span>
+    </button>
+  </div>
+
+  <header>
+    <h1>Dodge Challenger</h1>
+    <p>A força bruta dos motores HEMI V8 e o design atemporal dos Muscle Cars.</p>
+  </header>
+
+  <main>
+    <article class="card">
+      <img id="galleryImg" class="card-img" src="https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&w=800&q=80" alt="Dodge Challenger em destaque">
+      <div class="card-content">
+        <h2 id="galleryTitle">Dodge Challenger SRT Hellcat</h2>
+        <p id="galleryDesc">Equipado com motor V8 Supercharged de 6.2 litros, entrega mais de 700 cavalos de potência com um ronco inconfundível.</p>
+
+        <div class="gallery-controls">
+          <button class="nav-btn" id="prevBtn">❮ Anterior</button>
+          <span id="imageCounter" style="color: var(--text-muted); font-size: 0.9rem;">1 de 3</span>
+          <button class="nav-btn" id="nextBtn">Próxima ❯</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-content">
+        <h2>Especificações da Linha</h2>
+        <ul class="specs-list">
+          <li><strong>Motorização Padrão:</strong> <span>3.6L V6 Pentastar / 5.7L V8 HEMI</span></li>
+          <li><strong>Versão de Alta Performance:</strong> <span>6.2L V8 HEMI Supercharged</span></li>
+          <li><strong>Potência Máxima:</strong> <span>Até 808 cv (SRT Demon)</span></li>
+          <li><strong>Transmissão:</strong> <span>Manual de 6 marchas ou Automática de 8</span></li>
+          <li><strong>Aceleração (0-100 km/h):</strong> <span>Até 2.3 segundos (SRT Demon)</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <section class="like-section">
+      <p style="margin-bottom: 15px; font-weight: 600;">Você considera este o melhor Muscle Car da história?</p>
+      <button class="like-btn" id="likeBtn">
+        🏁 Curtir
+      </button>
+      <div class="counter">
+        <span id="likeCount">0</span> entusiastas votaram
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Página criada para os apaixonados pela cultura automotiva clássica e moderna.</p>
+  </footer>
+
+  <script>
+    // Dados da Galeria de Imagens
+    const galleryData = [
+      {
+        url: "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&w=800&q=80",
+        title: "Dodge Challenger SRT Hellcat",
+        desc: "Equipado com motor V8 Supercharged de 6.2 litros, entrega mais de 700 cavalos de potência com um ronco inconfundível."
+      },
+      {
+        url: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80",
+        title: "Design Agressivo e Traseira Clássica",
+        desc: "Suas lanternas de LED horizontais mantêm a assinatura visual que consagrou o modelo desde a década de 1970."
+      },
+      {
+        url: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80",
+        title: "Espírito das Pistas de Arrancada",
+        desc: "Projetado para máxima estabilidade em reta e aceleração imediata, sendo uma das maiores lendas das pistas."
+      }
+    ];
+
+    let currentIndex = 0;
+
+    const galleryImg = document.getElementById('galleryImg');
+    const galleryTitle = document.getElementById('galleryTitle');
+    const galleryDesc = document.getElementById('galleryDesc');
+    const imageCounter = document.getElementById('imageCounter');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateGallery(index) {
+      galleryImg.src = galleryData[index].url;
+      galleryTitle.textContent = galleryData[index].title;
+      galleryDesc.textContent = galleryData[index].desc;
+      imageCounter.textContent = `${index + 1} de ${galleryData.length}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex === 0) ? galleryData.length - 1 : currentIndex - 1;
+      updateGallery(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex === galleryData.length - 1) ? 0 : currentIndex + 1;
+      updateGallery(currentIndex);
+    });
+
+    // Contador de Likes
+    const likeBtn = document.getElementById('likeBtn');
+    const likeCount = document.getElementById('likeCount');
+    let count = 0;
+
+    likeBtn.addEventListener('click', () => {
+      count++;
+      likeCount.textContent = count;
+    });
+
+    // Alternância de Tema Claro / Escuro
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      
+      if (currentTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Modo Escuro';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Modo Claro';
+      }
+    });
+  </script>
+
+</body>
+</html>
